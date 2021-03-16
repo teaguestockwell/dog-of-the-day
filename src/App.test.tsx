@@ -1,9 +1,9 @@
 import React from 'react'
 import {render, screen} from '@testing-library/react'
-import App from './App'
+import TabBar from './TabBar'
 
 test('renders learn react link', () => {
-  render(<App />)
+  render(<TabBar />)
   const linkElement = screen.getByText(/learn react/i)
   expect(linkElement).toBeInTheDocument()
 })
