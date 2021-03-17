@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { CardList } from '../components/CardList'
+import { CardList } from '../components/ImgCardList'
 import { UnplashImg } from '../services'
 
 interface AllImgProps {

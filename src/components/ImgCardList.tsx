@@ -1,4 +1,4 @@
-import { CustomCard2 } from './CustomCard2'
+import { ImgCard } from './ImgCard'
 import { UnplashImg } from '../services'
 import LazyLoad from 'react-lazyload';
 
@@ -10,7 +10,7 @@ return (
     
     {imgs.map(x => (
       <LazyLoad height={500}>
-        <CustomCard2 {...x}/>
+        <ImgCard {...x}/>
       </LazyLoad>
     ))}
   </section>
