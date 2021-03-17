@@ -12,19 +12,20 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
+import GetAppIcon from '@material-ui/icons/GetApp';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import LanguageIcon from '@material-ui/icons/Language';
 import { UnplashImg } from '../services'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: 400,
+      maxWidth: 600,
+      minWidth: 400
     },
     media: {
       height: 0,
-      paddingTop: '56.25%', // 16:9
+      paddingTop: '99.99%'//'56.25%', // 16:9
     },
     expand: {
       transform: 'rotate(0deg)',
@@ -46,17 +47,20 @@ export function CustomCard2(props: UnplashImg) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  function handleExpandClick():void{
+    setExpanded(!expanded)
+  }
+  
+  
 
   return (
-    <Card className={classes.root}>
-      <a href={props.portfolio_url}>
+    <Card className={classes.root} key={props.id}>
+
+      <a href={props.portfolio_url} target="_blank" rel='noreferrer'>
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
-              <a href={props.portfolio_url}>
+              <a href={props.portfolio_url} target="_blank" rel='noreferrer'>
                 <img alt={''}src={props.authorImgUrl}></img>
               </a>
             </Avatar>
@@ -66,13 +70,11 @@ export function CustomCard2(props: UnplashImg) {
         />
       </a>
 
-      <a href={props.imgLink}>
-        <CardMedia
-          className={classes.media}
-          image={props.imgUrl}
-          title={props.title}
-        />
-      </a>
+      <CardMedia
+        className={classes.media}
+        image={props.imgUrl}
+        title={props.title}
+      />
 
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -84,9 +86,20 @@ export function CustomCard2(props: UnplashImg) {
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
+        
+        <a href={props.downloadLink} target="_blank" rel='noreferrer'>
+          <IconButton aria-label="share">
+            <GetAppIcon/>
+          </IconButton>
+        </a>
+        
+        <a href={props.imgLink} target="_blank" rel='noreferrer'>
+          <IconButton aria-label="vist source">
+              <LanguageIcon/>
+            </IconButton>
+         </a>
+
+
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
@@ -97,6 +110,7 @@ export function CustomCard2(props: UnplashImg) {
         >
           <ExpandMoreIcon />
         </IconButton>
+        
       </CardActions>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>

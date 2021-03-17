@@ -1,19 +1,18 @@
 import { CustomCard2 } from './CustomCard2'
 import { UnplashImg } from '../services'
-
+import LazyLoad from 'react-lazyload';
 
 
 export function CardList({imgs}: {imgs: UnplashImg[]}){
 
 return (
   <section>
-    <ul>
+    
     {imgs.map(x => (
-      <li key={x.id}>
+      <LazyLoad height={500}>
         <CustomCard2 {...x}/>
-      </li>
+      </LazyLoad>
     ))}
-    </ul>
   </section>
 )  
 }

@@ -14,6 +14,7 @@ export interface UnplashImg {
   likes: number
   authorBio: string
   portfolio_url: string
+  downloadLink: string
 }
 
 /** return an array of UnsplashResponse from query string */
@@ -39,8 +40,9 @@ export async function getN(imgName: String): Promise<UnplashImg[] | null>  {
           description: result.description,
           alt_description: result.alt_description,
           authorImgUrl: result.user.profile_image.medium, // w64 h64
-          imgUrl: result.urls.small, // w 400
-          imgLink: result.links.self,
+          imgUrl: result.urls.small.slice(0,-3) + '600', // w=400 => 4=600
+          imgLink: result.links.html,
+          downloadLink: result.links.download,
           likes: result.likes,
           authorBio: result.user.bio
         }
