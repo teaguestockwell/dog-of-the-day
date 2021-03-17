@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import TabBar from './pages/TabBar'
+import TabBar from './layout/TabBar'
 import { FavoritesContextProvider } from './store/FavoriteContext'
 
 ReactDOM.render(

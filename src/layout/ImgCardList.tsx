@@ -1,9 +1,9 @@
-import { ImgCard } from './ImgCard'
-import { UnplashImg } from '../services/unsplash'
+import { ImgCard } from '../components/ImgCard'
+import { UnSplashImg } from '../services/unsplash'
 import LazyLoad from 'react-lazyload';
 
 
-export function CardList({imgs}: {imgs: UnplashImg[]}){
+export function ImgCardList({imgs}: {imgs: UnSplashImg[]}){
 
 return (
   <section>

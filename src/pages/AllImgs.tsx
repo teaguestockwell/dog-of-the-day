@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react'
-import { CardList } from '../components/ImgCardList'
-import { UnplashImg } from '../services/unsplash'
+import { ImgCardList } from '../layout/ImgCardList'
+import { UnSplashImg } from '../services/unsplash'
 
 interface AllImgProps {
   imgName: string,
-  apiQuery: (imgName: string) => Promise<UnplashImg[] | null>,
+  apiQuery: (imgName: string) => Promise<UnSplashImg[] | null>,
   loadingComponent: JSX.Element
 }
 
 export function AllImgs(props: AllImgProps){
   const [isLoading, setIsLoading] = useState(true)
-  const [loadedImgs, setCustomCardPropsList ] = useState<UnplashImg[]>([])
+  const [loadedImgs, setCustomCardPropsList ] = useState<UnSplashImg[]>([])
 
   useEffect(() => {
     props.apiQuery(props.imgName).then(unsplashPictures => {
@@ -26,6 +26,6 @@ export function AllImgs(props: AllImgProps){
  }
 
  else{
-   return (<CardList imgs={loadedImgs}/>)
+   return (<ImgCardList imgs={loadedImgs}/>)
  }
 }

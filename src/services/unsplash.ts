@@ -1,6 +1,6 @@
 
 /** Contains propeperties that make up an img card */
-export interface UnplashImg {
+export interface UnSplashImg {
   id: string
   authorName: string
   created: string
@@ -18,7 +18,7 @@ export interface UnplashImg {
 }
 
 /** return an array of UnsplashResponse from query string */
-export async function getN(imgName: String): Promise<UnplashImg[] | null>  {
+export async function getN(imgName: String): Promise<UnSplashImg[] | null>  {
   // thows if res != 200 && res.results.length = 0
   try{
     // send req and parse res to json

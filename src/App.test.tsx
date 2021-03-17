@@ -1,6 +1,6 @@
 import React from 'react'
 import {render, screen} from '@testing-library/react'
-import TabBar from './pages/TabBar'
+import TabBar from './layout/TabBar'
 
 test('renders learn react link', () => {
   render(<TabBar />)

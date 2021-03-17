@@ -1,11 +1,11 @@
 
 import { createContext, useState } from 'react';
-import { UnplashImg } from '../services/unsplash'
+import { UnSplashImg } from '../services/unsplash'
 
 interface IFavoriteContext{
-  favoritedImgs: UnplashImg[]
+  favoritedImgs: UnSplashImg[]
   totalFavoritedImgs: number,
-  addFavoriteImg: (x: UnplashImg) => void,
+  addFavoriteImg: (x: UnSplashImg) => void,
   removeFavoriteImg: (pictureId: string) => void,
   isFavoritedImg: (pictureId: string) => boolean,
 }
@@ -19,22 +19,22 @@ export const FavoritesContext = createContext<IFavoriteContext>({
 });
 
 export function FavoritesContextProvider(props: React.PropsWithChildren<{}>) {
-  const [favorites, setFavorites] = useState<UnplashImg[]>([]);
+  const [favorites, setFavorites] = useState<UnSplashImg[]>([]);
 
-  function addFavoriteHandler(newFavorite: UnplashImg):void {
+  function addFavoriteHandler(newFavorite: UnSplashImg):void {
     setFavorites((prevFavorites) => {
       return prevFavorites.concat(newFavorite);
     });
   }
 
-  function removeFavoriteHandler(unplashImgId: string):void {
+  function removeFavoriteHandler(UnSplashImgId: string):void {
     setFavorites(prevFavorites => {
-      return prevFavorites.filter(img => img.id !== unplashImgId);
+      return prevFavorites.filter(img => img.id !== UnSplashImgId);
     });
   }
 
-  function isFavoriteHandler(unplashImgId: string):boolean {
-    return favorites.some(img => img.id === unplashImgId);
+  function isFavoriteHandler(UnSplashImgId: string):boolean {
+    return favorites.some(img => img.id === UnSplashImgId);
   }
 
   const context: IFavoriteContext  = {

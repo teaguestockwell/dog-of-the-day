@@ -14,7 +14,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LanguageIcon from '@material-ui/icons/Language';
-import { UnplashImg } from '../services/unsplash'
+import { UnSplashImg } from '../services/unsplash'
 import { FavoritesContext } from '../store/FavoriteContext'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export function ImgCard(props: UnplashImg) {
+export function ImgCard(props: UnSplashImg) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
   const favoritesCtx = useContext(FavoritesContext);

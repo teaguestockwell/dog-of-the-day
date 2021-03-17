@@ -5,9 +5,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { AllImgs } from './AllImgs'
+import { AllImgs } from '../pages/AllImgs'
 import { getN } from '../services/unsplash'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { FavoritesPage } from '../pages/FavoriteImgs';
  
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -73,7 +74,7 @@ export default function SimpleTabs() {
         Item Two
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <FavoritesPage/>
       </TabPanel>
     </div>
   );
