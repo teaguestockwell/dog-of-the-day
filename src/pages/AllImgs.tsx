@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { CardList } from '../components/ImgCardList'
-import { UnplashImg } from '../services'
+import { UnplashImg } from '../services/unsplash'
 
 interface AllImgProps {
   imgName: string,

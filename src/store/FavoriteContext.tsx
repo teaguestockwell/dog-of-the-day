@@ -1,6 +1,6 @@
 
 import { createContext, useState } from 'react';
-import { UnplashImg } from '../services'
+import { UnplashImg } from '../services/unsplash'
 
 interface IFavoriteContext{
   favoritedImgs: UnplashImg[]
@@ -10,7 +10,7 @@ interface IFavoriteContext{
   isFavoritedImg: (pictureId: string) => boolean,
 }
 
-const FavoritesContext = createContext<IFavoriteContext>({
+export const FavoritesContext = createContext<IFavoriteContext>({
   favoritedImgs: [],
   totalFavoritedImgs: 0,
   addFavoriteImg: () => {},

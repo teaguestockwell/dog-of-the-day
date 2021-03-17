@@ -1,5 +1,5 @@
 import { ImgCard } from './ImgCard'
-import { UnplashImg } from '../services'
+import { UnplashImg } from '../services/unsplash'
 import LazyLoad from 'react-lazyload';
 
 

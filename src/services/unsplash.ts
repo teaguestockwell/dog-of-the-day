@@ -49,7 +49,7 @@ export async function getN(imgName: String): Promise<UnplashImg[] | null>  {
       }
     )
   } catch(e){
-    // to do implement on empty res
+    // TODO: implement on empty res
     return null
   }
 }

@@ -5,8 +5,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { AllImgs } from './pages/AllImgs'
-import { getN } from './services'
+import { AllImgs } from './AllImgs'
+import { getN } from '../services/unsplash'
 import CircularProgress from '@material-ui/core/CircularProgress';
  
 interface TabPanelProps {

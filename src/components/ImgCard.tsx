@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext, useState } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -14,7 +14,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LanguageIcon from '@material-ui/icons/Language';
-import { UnplashImg } from '../services'
+import { UnplashImg } from '../services/unsplash'
+import { FavoritesContext } from '../store/FavoriteContext'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -44,14 +45,18 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export function ImgCard(props: UnplashImg) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const favoritesCtx = useContext(FavoritesContext);
+  const imgIsFavorite = favoritesCtx.isFavoritedImg(props.id)
 
-  function handleExpandClick():void{
-    setExpanded(!expanded)
+  function toggleFavoriteStatusHandler():void {
+    if (imgIsFavorite) {
+      favoritesCtx.removeFavoriteImg(props.id);
+    } else {
+      favoritesCtx.addFavoriteImg(props);
+    }
   }
   
-  
-
   return (
     <Card className={classes.root} key={props.id}>
 
@@ -82,8 +87,11 @@ export function ImgCard(props: UnplashImg) {
       </CardContent>
 
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+        <IconButton aria-label="add to favorites"
+         onClick={toggleFavoriteStatusHandler}
+        >
+          
+          <FavoriteIcon style={{color: imgIsFavorite ? '#E61E1E' : '#626262'}} />
         </IconButton>
         
         <a href={props.downloadLink} target="_blank" rel='noreferrer'>
@@ -103,7 +111,7 @@ export function ImgCard(props: UnplashImg) {
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
           })}
-          onClick={handleExpandClick}
+          onClick={() => {setExpanded(!expanded)}}
           aria-expanded={expanded}
           aria-label="show more"
         >
