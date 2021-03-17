@@ -5,8 +5,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { AllDogs } from './components/AllDogs'
-
+import { AllImgs } from './pages/AllImgs'
+import { getN } from './services'
+import CircularProgress from '@material-ui/core/CircularProgress';
+ 
 interface TabPanelProps {
   children?: React.ReactNode;
   index: any;
@@ -65,7 +67,7 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <AllDogs/>
+        <AllImgs imgName={'dog'}  apiQuery={getN} loadingComponent={<CircularProgress/>}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
