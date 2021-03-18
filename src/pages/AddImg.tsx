@@ -2,6 +2,7 @@ import { Button } from '@material-ui/core';
 import {TextField } from 'formik-material-ui';
 import Box from '@material-ui/core/Box';
 import { Field, Form, Formik } from 'formik';
+import {LocalImgService} from '../services/LocalImgService'
 
 /** Partial of UnSplashImg */
 export interface IAddFourm {
@@ -95,20 +96,20 @@ export function AddImg() {
     const errors:Partial<IAddFourm> = {}
 
     // TODO: figure out how to loop though k,v of interface
-    if(!values.authorName || values.authorName.length > 50){errors.authorName = 'Required'}
-    if(!values.title || values.title.length > 50){errors.title = 'Required'}
-    if(!values.description || values.description.length > 50){errors.description = 'Required'}
-    if(!values.authorImgUrl || values.authorImgUrl.length > 50){errors.authorImgUrl = 'Required'}
-    if(!values.imgUrl || values.imgUrl.length > 50){errors.imgUrl = 'Required'}
-    if(!values.imgLink || values.imgLink.length > 50){errors.imgLink = 'Required'}
-    if(!values.authorBio || values.authorBio.length > 50){errors.authorBio = 'Required'}
-    if(!values.portfolio_url || values.portfolio_url.length > 50){errors.portfolio_url = 'Required'}
+    if(!values.authorName || values.authorName.length > 200){errors.authorName = 'Required'}
+    if(!values.title || values.title.length > 200){errors.title = 'Required'}
+    if(!values.description || values.description.length > 200){errors.description = 'Required'}
+    if(!values.authorImgUrl || values.authorImgUrl.length > 200){errors.authorImgUrl = 'Required'}
+    if(!values.imgUrl || values.imgUrl.length > 200){errors.imgUrl = 'Required'}
+    if(!values.imgLink || values.imgLink.length > 200){errors.imgLink = 'Required'}
+    if(!values.authorBio || values.authorBio.length > 200){errors.authorBio = 'Required'}
+    if(!values.portfolio_url || values.portfolio_url.length > 200){errors.portfolio_url = 'Required'}
   
     return errors
   }
 
-  function submitForm(values: IAddFourm):void {
-
+  async function submitForm(values: IAddFourm):Promise<void> {
+    await LocalImgService.put1(values)
     alert('Img Saved')
   }
 
@@ -138,7 +139,7 @@ export function AddImg() {
         setTimeout(() => {
           setSubmitting(false);
           submitForm(values)
-        }, 500);
+        }, 2000);
       }}
     >
       {({submitForm, isSubmitting, touched, errors}) => (

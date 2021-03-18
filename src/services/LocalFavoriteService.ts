@@ -1,9 +1,5 @@
 import {UnSplashImg} from "./UnSplashService"
-import lf from 'localforage'
-
-lf.config({
-  storeName: 'favorited_imgs'
-})
+import { FavoriteImgsStore } from './LocalForage'
 
 function timeout<T>(promise:Promise<T>):Promise<T> {
   return Promise.race<Promise<T>>([
@@ -15,7 +11,7 @@ function timeout<T>(promise:Promise<T>):Promise<T> {
 export const LocalFavoriteService = {
   put1: async (img:UnSplashImg):Promise<boolean> => {
     try{
-      await timeout(lf.setItem(img.id,img))
+      await timeout(FavoriteImgsStore.setItem(img.id,img))
     }catch(e){return false}
     return true
   },
@@ -24,23 +20,23 @@ export const LocalFavoriteService = {
     const imgs: UnSplashImg[] = []
     try{
       await timeout(
-        lf.iterate((val,_key,_index)=>{
+        FavoriteImgsStore.iterate((val,_key,_index)=>{
           imgs.push(val as UnSplashImg)
         })
       )
-    } catch(e){return []}
+    } catch(e){console.log(e); return []}
     return imgs
   },
 
   read1: async (imgId:UnSplashImg["id"]):Promise<UnSplashImg | null> => {
     try{
-      return await timeout(lf.getItem(imgId))
+      return await timeout(FavoriteImgsStore.getItem(imgId))
     } catch(e){return null}
   },
 
   delete1: async (imgId:string):Promise<boolean> => {
     try{
-      await timeout(lf.removeItem(imgId))
+      await timeout(FavoriteImgsStore.removeItem(imgId))
     }catch(e){return false}
     return true;
   }

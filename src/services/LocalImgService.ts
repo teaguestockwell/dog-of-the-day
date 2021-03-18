@@ -1,11 +1,7 @@
 import {UnSplashImg} from "./UnSplashService"
-import lf from 'localforage'
 import {IAddFourm} from '../pages/AddImg'
 import { v4 } from 'uuid'
-
-lf.config({
-  storeName: 'user_imgs'
-})
+import { LocalImgsStore } from './LocalForage'
 
 function timeout<T>(promise:Promise<T>):Promise<T> {
   return Promise.race<Promise<T>>([
@@ -37,16 +33,16 @@ export const LocalImgService = {
   put1: async (imgPartial: IAddFourm):Promise<boolean> => {
     const img = createUnSplashImgFromPartial(imgPartial)
     try{
-      await timeout(lf.setItem(img.id,img))
+      await timeout(LocalImgsStore.setItem(img.id,img))
     }catch(e){return false}
     return true
   },
 
-  readN: async ():Promise<UnSplashImg[]> => {
+  readN: async (_x:string):Promise<UnSplashImg[]> => {
     const imgs: UnSplashImg[] = []
     try{
       await timeout(
-        lf.iterate((val,_key,_index)=>{
+        LocalImgsStore.iterate((val,_key,_index)=>{
           imgs.push(val as UnSplashImg)
         })
       )
@@ -56,13 +52,13 @@ export const LocalImgService = {
 
   read1: async (imgId:UnSplashImg["id"]):Promise<UnSplashImg | null> => {
     try{
-      return await timeout(lf.getItem(imgId))
+      return await timeout(LocalImgsStore.getItem(imgId))
     } catch(e){return null}
   },
 
   delete1: async (imgId:string):Promise<boolean> => {
     try{
-      await timeout(lf.removeItem(imgId))
+      await timeout(LocalImgsStore.removeItem(imgId))
     }catch(e){return false}
     return true;
   }

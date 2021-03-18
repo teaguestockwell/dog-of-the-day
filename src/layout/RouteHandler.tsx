@@ -1,7 +1,8 @@
-import { AllImgs } from '../pages/AllImgs'
-import { UnSplashService } from '../services/UnSplashService'
-import { FavoritesImgs } from '../pages/FavoriteImgs';
 import { Route, Switch } from 'react-router-dom';
+import { UnSplashService } from '../services/UnSplashService'
+import { LocalImgService } from '../services/LocalImgService';
+import { FavoritesImgs } from '../pages/FavoriteImgs';
+import { AllImgs } from '../pages/AllImgs'
 import { Layout } from './Layout'
 import { AddImg } from '../pages/AddImg';
 
@@ -19,7 +20,7 @@ export function RouteHandler(){
           <AddImg/>
         </Route>
         <Route path='/mine'>
-          <AddImg/>
+        <AllImgs imgName={'mydogs'}  apiQuery={LocalImgService.readN}/>
         </Route>
       </Switch>
     </Layout>
