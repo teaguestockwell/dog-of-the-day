@@ -16,7 +16,7 @@ export const LocalFavoriteService = {
     return true
   },
 
-  readN: async (img:UnSplashImg):Promise<UnSplashImg[]> => {
+  readN: async ():Promise<UnSplashImg[]> => {
     const imgs: UnSplashImg[] = []
     try{
       await timeout(

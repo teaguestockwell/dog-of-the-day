@@ -1,6 +1,7 @@
 
-import { createContext, useState } from 'react';
+import { Context, createContext, useEffect, useState } from 'react';
 import { UnSplashImg } from '../services/UnSplash'
+import { LocalFavoriteService } from '../services/LocalFavoriteService'
 
 interface IFavoriteContext{
   favoritedImgs: UnSplashImg[]
@@ -16,18 +17,28 @@ export const FavoritesContext = createContext<IFavoriteContext>({
   addFavoriteImg: () => {},
   removeFavoriteImg: () => {},
   isFavoritedImg: () => false,
-});
+})
 
 export function FavoritesContextProvider(props: React.PropsWithChildren<{}>) {
   const [favorites, setFavorites] = useState<UnSplashImg[]>([]);
 
+  // init the local storage
+  useEffect(()=>{
+    LocalFavoriteService.readN().then(localFavImgs =>{
+      setFavorites(localFavImgs)
+    })
+  },[])
+
   function addFavoriteHandler(newFavorite: UnSplashImg):void {
+    LocalFavoriteService.put1(newFavorite)
     setFavorites((prevFavorites) => {
       return prevFavorites.concat(newFavorite);
     });
   }
 
   function removeFavoriteHandler(UnSplashImgId: string):void {
+    LocalFavoriteService.delete1(UnSplashImgId)
+
     setFavorites(prevFavorites => {
       return prevFavorites.filter(img => img.id !== UnSplashImgId);
     });

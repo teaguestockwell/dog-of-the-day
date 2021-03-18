@@ -16,7 +16,7 @@ export interface UnSplashImg {
   downloadLink: string
 }
 
-/** return an array of UnsplashResponse from query string */
+/** return an array of UnSplashImg from query string */
 export async function getN(imgName: String): Promise<UnSplashImg[] | null>  {
   // thows if res != 200 && res.results.length = 0
   try{
@@ -26,7 +26,7 @@ export async function getN(imgName: String): Promise<UnSplashImg[] | null>  {
       {headers: {'Authorization': `Client-ID ${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}`}}
     ).then(res =>res.json())
     
-    // for construct  a UnplashRespose for each obj
+    // for construct  a UnSplashImg for each obj
     return resBody.results.map(
       (result: any) => {
         return {
