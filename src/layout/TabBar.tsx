@@ -40,7 +40,6 @@ export function TabBar() {
           <StyledBadge badgeContent={favoritesCtx.totalFavoritedImgs}>
             <Tab label='Favorite Dogs' color="primary" component={Link} to='/favorites'/>
           </StyledBadge>
-
         </Tabs>
       </AppBar>
     </>

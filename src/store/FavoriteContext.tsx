@@ -1,6 +1,6 @@
 
 import { createContext, useState } from 'react';
-import { UnSplashImg } from '../services/unsplash'
+import { UnSplashImg } from '../services/UnSplash'
 
 interface IFavoriteContext{
   favoritedImgs: UnSplashImg[]

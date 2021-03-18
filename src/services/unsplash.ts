@@ -1,4 +1,3 @@
-
 /** Contains propeperties that make up an img card */
 export interface UnSplashImg {
   id: string
