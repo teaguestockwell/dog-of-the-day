@@ -2,7 +2,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import Badge from '@material-ui/core/Badge'
+import { FavoritesContext } from '../store/FavoriteContext';
+import { styled } from '@material-ui/core/styles';
  
 function getAppBarIndex():number {
   switch (window.location.pathname) {
@@ -13,8 +16,18 @@ function getAppBarIndex():number {
   }
 }
 
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: 23,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}));
+
 export function TabBar() {
   const [tabIndex,setTabIndex] = useState(0)
+  const favoritesCtx = useContext(FavoritesContext);
   
   function onTabClick(){setTabIndex(getAppBarIndex())}
 
@@ -24,7 +37,10 @@ export function TabBar() {
         <Tabs value={tabIndex}>
           <Tab label="All Dogs" component={Link} to='/'/>
           <Tab label="Add Dog" component={Link} to='/add'/>
-          <Tab label="Favorite Dogs" component={Link} to='/favorites'/>
+          <StyledBadge badgeContent={favoritesCtx.totalFavoritedImgs}>
+            <Tab label='Favorite Dogs' color="primary" component={Link} to='/favorites'/>
+          </StyledBadge>
+
         </Tabs>
       </AppBar>
     </>
