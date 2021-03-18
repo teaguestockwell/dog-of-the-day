@@ -1,6 +1,5 @@
 import { AllImgs } from '../pages/AllImgs'
-import { getN } from '../services/UnSplash'
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { UnSplashService } from '../services/UnSplash'
 import { FavoritesImgs } from '../pages/FavoriteImgs';
 import { Route, Switch } from 'react-router-dom';
 import { Layout } from './Layout'
@@ -11,7 +10,7 @@ export function RouteHandler(){
     <Layout>
       <Switch>
         <Route path='/' exact>
-          <AllImgs imgName={'dog'}  apiQuery={getN} loadingComponent={<CircularProgress/>}/>
+          <AllImgs imgName={'dog'}  apiQuery={UnSplashService.getN}/>
         </Route>
         <Route path='/add'>
           <AddImg/>

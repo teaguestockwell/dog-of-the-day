@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import {TextField } from 'formik-material-ui';
 import Box from '@material-ui/core/Box';
-import { Field, Form, Formik, FormikHelpers } from 'formik';
+import { Field, Form, Formik } from 'formik';
 
 /** Partial of UnSplashImg */
 interface IAddFourm {
@@ -107,10 +107,6 @@ export function AddImg() {
     return errors
   }
 
-  function submitForm(values: IAddFourm, formikHelpers: FormikHelpers<IAddFourm>){
-    console.log(values)
-  }
-
   function getForms(): JSX.Element[] {
    return (
     formTextFeilds.map(x => (
@@ -133,7 +129,12 @@ export function AddImg() {
     <Formik
       initialValues={initVals}
       validate={validateForm}
-      onSubmit={submitForm}
+      onSubmit={(values, {setSubmitting}) => {
+        setTimeout(() => {
+          setSubmitting(false);
+          //submitForm(values)
+        }, 500);
+      }}
     >
       {({submitForm, isSubmitting, touched, errors}) => (
       <Form>

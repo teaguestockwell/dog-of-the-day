@@ -1,7 +1,7 @@
 
 import { Context, createContext, useEffect, useState } from 'react';
 import { UnSplashImg } from '../services/UnSplash'
-import { LocalFavoriteService } from '../services/LocalFavoriteService'
+import { LocalFavoriteService } from '../services/LocalFavorite'
 
 interface IFavoriteContext{
   favoritedImgs: UnSplashImg[]

@@ -1,3 +1,4 @@
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { useEffect, useState } from 'react'
 import { ImgLazyGrid } from '../components/ImgLazyGrid'
 import { UnSplashImg } from '../services/UnSplash'
@@ -5,7 +6,6 @@ import { UnSplashImg } from '../services/UnSplash'
 interface AllImgProps {
   imgName: string,
   apiQuery: (imgName: string) => Promise<UnSplashImg[] | null>,
-  loadingComponent: JSX.Element
 }
 
 export function AllImgs(props: AllImgProps){
@@ -22,7 +22,7 @@ export function AllImgs(props: AllImgProps){
   },[props])
 
  if(isLoading){
-   return(props.loadingComponent)
+   return(<CircularProgress/>)
  }
 
  else{
