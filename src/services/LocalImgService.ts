@@ -1,5 +1,7 @@
 import {UnSplashImg} from "./UnSplashService"
 import lf from 'localforage'
+import {IAddFourm} from '../pages/AddImg'
+import { v4 } from 'uuid'
 
 lf.config({
   storeName: 'user_imgs'
@@ -12,8 +14,28 @@ function timeout<T>(promise:Promise<T>):Promise<T> {
   ])
 }
 
+function createUnSplashImgFromPartial(partial: IAddFourm):UnSplashImg {
+  return({
+    id: v4(),
+    authorName: partial.authorName,
+    created: new Date().toISOString(),
+    title: partial.title,
+    altTitle: '',
+    description: partial.description,
+    alt_description: '',
+    authorImgUrl: partial.authorImgUrl,
+    imgUrl: partial.imgUrl,
+    imgLink: partial.imgLink,
+    likes: 0,
+    authorBio: partial.authorBio,
+    portfolio_url: partial.portfolio_url,
+    downloadLink: partial.imgUrl,
+  })
+}
+
 export const LocalImgService = {
-  put1: async (img:UnSplashImg):Promise<boolean> => {
+  put1: async (imgPartial: IAddFourm):Promise<boolean> => {
+    const img = createUnSplashImgFromPartial(imgPartial)
     try{
       await timeout(lf.setItem(img.id,img))
     }catch(e){return false}

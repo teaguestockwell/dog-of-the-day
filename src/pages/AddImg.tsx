@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import { Field, Form, Formik } from 'formik';
 
 /** Partial of UnSplashImg */
-interface IAddFourm {
+export interface IAddFourm {
   //id: string,
   authorName: string,
   //created: string,
@@ -107,6 +107,11 @@ export function AddImg() {
     return errors
   }
 
+  function submitForm(values: IAddFourm):void {
+
+    alert('Img Saved')
+  }
+
   function getForms(): JSX.Element[] {
    return (
     formTextFeilds.map(x => (
@@ -132,7 +137,7 @@ export function AddImg() {
       onSubmit={(values, {setSubmitting}) => {
         setTimeout(() => {
           setSubmitting(false);
-          //submitForm(values)
+          submitForm(values)
         }, 500);
       }}
     >
