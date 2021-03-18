@@ -13,14 +13,14 @@ return (
      alignItems={"center"}
      >
       {imgs.map(x => (
-        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-          <LazyLoad height={300}>
+        <Grid item xs={12} sm={12} md={6} lg={6} xl={6} key={`grid item ${x.id}`}>
+          <LazyLoad height={300} key={`ll ${x.id}`}>
             <div style={{
               display: 'flex',
               justifyContent: 'center',
               //backgroundColor: 'black'
-            }}>
-            <ImgCard {...x}/>
+            }} key={`center ${x.id}`}>
+            <ImgCard {...x} key={x.id}/>
             </div>
           </LazyLoad>
         </Grid>

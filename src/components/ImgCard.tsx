@@ -65,9 +65,7 @@ export function ImgCard(props: UnSplashImg) {
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
-              <a href={props.portfolio_url} target="_blank" rel='noreferrer'>
-                <img alt={''}src={props.authorImgUrl}></img>
-              </a>
+              <img alt={''}src={props.authorImgUrl}></img>
             </Avatar>
           }
           title={props.authorName}
