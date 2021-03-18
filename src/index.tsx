@@ -1,13 +1,13 @@
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
-import {TabBar} from './layout/TabBar'
+import { RouteHandler } from './layout/RouteHandler'
 import { FavoritesContextProvider } from './store/FavoriteContext'
 
 ReactDOM.render(
-    <FavoritesContextProvider>
+  <FavoritesContextProvider>
     <BrowserRouter>
-      <TabBar />
-      </BrowserRouter>
-    </FavoritesContextProvider>
+      <RouteHandler/>
+    </BrowserRouter>
+  </FavoritesContextProvider>
   ,document.getElementById('root')
 )

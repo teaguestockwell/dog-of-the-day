@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ImgLazyGrid } from '../layout/ImgLazyGrid'
+import { ImgLazyGrid } from '../components/ImgLazyGrid'
 import { UnSplashImg } from '../services/unsplash'
 
 interface AllImgProps {

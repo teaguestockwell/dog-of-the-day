@@ -1,10 +1,9 @@
 import { useContext } from 'react';
 import {FavoritesContext} from '../store/FavoriteContext';
-import {ImgLazyGrid} from '../layout/ImgLazyGrid';
+import {ImgLazyGrid} from '../components/ImgLazyGrid';
 
 export function FavoritesImgs() {
   const favoritesCtx = useContext(FavoritesContext);
-  console.log(favoritesCtx.totalFavoritedImgs)
 
   if (favoritesCtx.totalFavoritedImgs === 0) {
     return(

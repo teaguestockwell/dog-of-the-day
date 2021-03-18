@@ -1,4 +1,4 @@
-import { ImgCard } from '../components/ImgCard'
+import { ImgCard } from './ImgCard'
 import { UnSplashImg } from '../services/unsplash'
 import LazyLoad from 'react-lazyload';
 import Grid from '@material-ui/core/Grid'
