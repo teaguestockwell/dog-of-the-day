@@ -4,7 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { FavoritesImgs } from '../pages/FavoriteImgs';
 import { Route, Switch } from 'react-router-dom';
 import { Layout } from './Layout'
-import { TestLf } from '../components/TestLf'
+import { AddImg } from '../pages/AddImg';
 
 export function RouteHandler(){
   return(
@@ -14,7 +14,7 @@ export function RouteHandler(){
           <AllImgs imgName={'dog'}  apiQuery={getN} loadingComponent={<CircularProgress/>}/>
         </Route>
         <Route path='/add'>
-          <TestLf/>
+          <AddImg/>
         </Route>
         <Route path='/favorites'>
           <FavoritesImgs/>
