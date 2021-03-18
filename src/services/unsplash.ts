@@ -40,7 +40,7 @@ export async function getN(imgName: String): Promise<UnSplashImg[] | null>  {
           description: result.description,
           alt_description: result.alt_description,
           authorImgUrl: result.user.profile_image.medium, // w64 h64
-          imgUrl: result.urls.small.slice(0,-3) + '600', // w=400 => 4=600
+          imgUrl: result.urls.small.slice(0,-3) + '400', // w=400 => 4=600
           imgLink: result.links.html,
           downloadLink: result.links.download,
           likes: result.likes,

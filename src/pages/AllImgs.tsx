@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ImgCardList } from '../layout/ImgCardList'
+import { ImgLazyGrid } from '../layout/ImgLazyGrid'
 import { UnSplashImg } from '../services/unsplash'
 
 interface AllImgProps {
@@ -26,6 +26,6 @@ export function AllImgs(props: AllImgProps){
  }
 
  else{
-   return (<ImgCardList imgs={loadedImgs}/>)
+   return (<ImgLazyGrid imgs={loadedImgs}/>)
  }
 }

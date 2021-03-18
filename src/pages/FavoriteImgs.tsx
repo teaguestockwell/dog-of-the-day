@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import {FavoritesContext} from '../store/FavoriteContext';
-import {ImgCardList} from '../layout/ImgCardList';
+import {ImgLazyGrid} from '../layout/ImgLazyGrid';
 
 export function FavoritesPage() {
   const favoritesCtx = useContext(FavoritesContext);
@@ -11,7 +11,7 @@ export function FavoritesPage() {
     )
   } else {
     return(
-      <ImgCardList imgs={favoritesCtx.favoritedImgs} />
+      <ImgLazyGrid imgs={favoritesCtx.favoritedImgs} />
     )
   }
 }

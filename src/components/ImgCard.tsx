@@ -17,15 +17,16 @@ import LanguageIcon from '@material-ui/icons/Language';
 import { UnSplashImg } from '../services/unsplash'
 import { FavoritesContext } from '../store/FavoriteContext'
 
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: 600,
-      minWidth: 400
+      width: 400,
+     
     },
     media: {
-      height: 0,
-      paddingTop: '99.99%'//'56.25%', // 16:9
+      width: 400,
+      height: 400
     },
     expand: {
       transform: 'rotate(0deg)',
