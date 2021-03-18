@@ -21,6 +21,7 @@ import { FavoritesContext } from '../store/FavoriteContext'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      boxShadow: '2px 1px 10px',
       width: 400,
      
     },

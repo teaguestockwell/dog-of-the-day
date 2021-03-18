@@ -7,7 +7,7 @@ export function FavoritesImgs() {
 
   if (favoritesCtx.totalFavoritedImgs === 0) {
     return(
-      <p>You have no favorites yet. Start adding some?</p>
+      <h1>You have no favorites yet. Start adding some?</h1>
     )
   } else {
     return(
