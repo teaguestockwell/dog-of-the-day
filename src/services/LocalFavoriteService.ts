@@ -1,5 +1,9 @@
-import {UnSplashImg} from "./UnSplash"
+import {UnSplashImg} from "./UnSplashService"
 import lf from 'localforage'
+
+lf.config({
+  storeName: 'favorited_imgs'
+})
 
 function timeout<T>(promise:Promise<T>):Promise<T> {
   return Promise.race<Promise<T>>([

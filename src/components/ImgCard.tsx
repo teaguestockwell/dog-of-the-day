@@ -14,7 +14,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LanguageIcon from '@material-ui/icons/Language';
-import { UnSplashImg } from '../services/UnSplash'
+import { UnSplashImg } from '../services/UnSplashService'
 import { FavoritesContext } from '../store/FavoriteContext'
 
 

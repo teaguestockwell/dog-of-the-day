@@ -1,5 +1,5 @@
 import { AllImgs } from '../pages/AllImgs'
-import { UnSplashService } from '../services/UnSplash'
+import { UnSplashService } from '../services/UnSplashService'
 import { FavoritesImgs } from '../pages/FavoriteImgs';
 import { Route, Switch } from 'react-router-dom';
 import { Layout } from './Layout'
@@ -12,11 +12,14 @@ export function RouteHandler(){
         <Route path='/' exact>
           <AllImgs imgName={'dog'}  apiQuery={UnSplashService.getN}/>
         </Route>
+        <Route path='/favorites'>
+          <FavoritesImgs/>
+        </Route>
         <Route path='/add'>
           <AddImg/>
         </Route>
-        <Route path='/favorites'>
-          <FavoritesImgs/>
+        <Route path='/mine'>
+          <AddImg/>
         </Route>
       </Switch>
     </Layout>

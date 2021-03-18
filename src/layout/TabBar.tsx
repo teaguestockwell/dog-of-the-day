@@ -10,8 +10,9 @@ import { styled } from '@material-ui/core/styles';
 function getAppBarIndex():number {
   switch (window.location.pathname) {
     case '/': return 0
-    case '/add': return 1
-    case '/favorites':return 2
+    case '/favorites':return 1
+    case '/add': return 2
+    case '/mine':return 3
     default: return 0
   }
 }
@@ -36,10 +37,11 @@ export function TabBar() {
       <AppBar position='fixed' onClick={onTabClick}>
         <Tabs value={tabIndex}>
           <Tab label="All Dogs" component={Link} to='/'/>
-          <Tab label="Add Dog" component={Link} to='/add'/>
           <StyledBadge badgeContent={favoritesCtx.totalFavoritedImgs}>
             <Tab label='Favorite Dogs' color="primary" component={Link} to='/favorites'/>
           </StyledBadge>
+          <Tab label="Add Dog" component={Link} to='/add'/>
+          <Tab label="My Dogs" component={Link} to='/mine'/>
         </Tabs>
       </AppBar>
     </>

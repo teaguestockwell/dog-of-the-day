@@ -1,7 +1,7 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useEffect, useState } from 'react'
 import { ImgLazyGrid } from '../components/ImgLazyGrid'
-import { UnSplashImg } from '../services/UnSplash'
+import { UnSplashImg } from '../services/UnSplashService'
 
 interface AllImgProps {
   imgName: string,
