@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import axios, {AxiosRequestConfig} from 'axios'
 /** Contains propeperties that make up an img card */
 export interface UnSplashImg {
   id: string
@@ -20,10 +20,10 @@ export interface UnSplashImg {
 const base = 'https://api.unsplash.com'
 const query = '/search/photos?per_page=500&query='
 const queryRandom = '/photos/random?query='
-const config:AxiosRequestConfig = {
+const config: AxiosRequestConfig = {
   headers: {
-    'Authorization': `Client-ID ${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}`
-  }
+    Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}`,
+  },
 }
 
 /** return an array of UnSplashImg from query string */
@@ -60,7 +60,7 @@ export const UnSplashService = {
   get1Random: async (imgName: String): Promise<UnSplashImg[] | null> => {
     // thows if res != 200 && res.results.length = 0
     try {
-      const json = (await axios.get(base + queryRandom + imgName,config)).data
+      const json = (await axios.get(base + queryRandom + imgName, config)).data
 
       // for construct  a UnSplashImg for each obj
       return [

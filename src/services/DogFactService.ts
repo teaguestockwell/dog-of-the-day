@@ -2,7 +2,11 @@ import axios from 'axios'
 export const DogFactService = {
   get1Random: async (): Promise<string> => {
     try {
-      const json = (await axios.get('https://dog-facts-api.herokuapp.com/api/v1/resources/dogs/all')).data
+      const json = (
+        await axios.get(
+          'https://dog-facts-api.herokuapp.com/api/v1/resources/dogs/all'
+        )
+      ).data
 
       const facts: string[] = json.map((x: any) => x.fact)
 
