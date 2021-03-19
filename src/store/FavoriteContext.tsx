@@ -1,14 +1,13 @@
+import {createContext, useEffect, useState} from 'react'
+import {UnSplashImg} from '../services/UnSplashService'
+import {LocalFavoriteService} from '../services/LocalFavoriteService'
 
-import { createContext, useEffect, useState } from 'react';
-import { UnSplashImg } from '../services/UnSplashService'
-import { LocalFavoriteService } from '../services/LocalFavoriteService'
-
-interface IFavoriteContext{
+interface IFavoriteContext {
   favoritedImgs: UnSplashImg[]
-  totalFavoritedImgs: number,
-  addFavoriteImg: (x: UnSplashImg) => void,
-  removeFavoriteImg: (pictureId: string) => void,
-  isFavoritedImg: (pictureId: string) => boolean,
+  totalFavoritedImgs: number
+  addFavoriteImg: (x: UnSplashImg) => void
+  removeFavoriteImg: (pictureId: string) => void
+  isFavoritedImg: (pictureId: string) => boolean
 }
 
 export const FavoritesContext = createContext<IFavoriteContext>({
@@ -20,45 +19,45 @@ export const FavoritesContext = createContext<IFavoriteContext>({
 })
 
 export function FavoritesContextProvider(props: React.PropsWithChildren<{}>) {
-  const [favorites, setFavorites] = useState<UnSplashImg[]>([]);
+  const [favorites, setFavorites] = useState<UnSplashImg[]>([])
 
   // init the local storage
-  useEffect(()=>{
-    LocalFavoriteService.readN().then(localFavImgs =>{
+  useEffect(() => {
+    LocalFavoriteService.readN().then((localFavImgs) => {
       setFavorites(localFavImgs)
     })
-  },[])
+  }, [])
 
-  function addFavoriteHandler(newFavorite: UnSplashImg):void {
+  function addFavoriteHandler(newFavorite: UnSplashImg): void {
     LocalFavoriteService.put1(newFavorite)
     setFavorites((prevFavorites) => {
-      return prevFavorites.concat(newFavorite);
-    });
+      return prevFavorites.concat(newFavorite)
+    })
   }
 
-  function removeFavoriteHandler(UnSplashImgId: string):void {
+  function removeFavoriteHandler(UnSplashImgId: string): void {
     LocalFavoriteService.delete1(UnSplashImgId)
 
-    setFavorites(prevFavorites => {
-      return prevFavorites.filter(img => img.id !== UnSplashImgId);
-    });
+    setFavorites((prevFavorites) => {
+      return prevFavorites.filter((img) => img.id !== UnSplashImgId)
+    })
   }
 
-  function isFavoriteHandler(UnSplashImgId: string):boolean {
-    return favorites.some(img => img.id === UnSplashImgId);
+  function isFavoriteHandler(UnSplashImgId: string): boolean {
+    return favorites.some((img) => img.id === UnSplashImgId)
   }
 
-  const context: IFavoriteContext  = {
+  const context: IFavoriteContext = {
     favoritedImgs: favorites,
     totalFavoritedImgs: favorites.length,
     addFavoriteImg: addFavoriteHandler,
     removeFavoriteImg: removeFavoriteHandler,
-    isFavoritedImg: isFavoriteHandler
-  };
+    isFavoritedImg: isFavoriteHandler,
+  }
 
   return (
     <FavoritesContext.Provider value={context}>
       {props.children}
     </FavoritesContext.Provider>
-  );
+  )
 }
