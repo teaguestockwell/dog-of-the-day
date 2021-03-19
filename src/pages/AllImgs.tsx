@@ -10,12 +10,12 @@ interface AllImgProps {
 
 export function AllImgs(props: AllImgProps){
   const [isLoading, setIsLoading] = useState(true)
-  const [loadedImgs, setCustomCardPropsList ] = useState<UnSplashImg[]>([])
+  const [loadedImgs, setLoadedImgs ] = useState<UnSplashImg[]>([])
 
   useEffect(() => {
-    props.apiQuery(props.imgName).then(unsplashPictures => {
-      if(unsplashPictures){
-        setCustomCardPropsList(unsplashPictures)
+    props.apiQuery(props.imgName).then(unSplashImgs => {
+      if(unSplashImgs){
+        setLoadedImgs(unSplashImgs)
         setIsLoading(false)
       }
     })

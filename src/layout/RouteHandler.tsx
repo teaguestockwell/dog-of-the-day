@@ -5,6 +5,7 @@ import { FavoritesImgs } from '../pages/FavoriteImgs';
 import { AllImgs } from '../pages/AllImgs'
 import { Layout } from './Layout'
 import { AddImg } from '../pages/AddImg';
+import { DogOfDay } from '../pages/DogOfDay';
 
 export function RouteHandler(){
   return(
@@ -20,7 +21,10 @@ export function RouteHandler(){
           <AddImg/>
         </Route>
         <Route path='/mine'>
-        <AllImgs imgName={'mydogs'}  apiQuery={LocalImgService.readN}/>
+          <AllImgs imgName={'mydogs'}  apiQuery={LocalImgService.readN}/>
+        </Route>
+        <Route path='/dod'>
+          <DogOfDay/>
         </Route>
       </Switch>
     </Layout>

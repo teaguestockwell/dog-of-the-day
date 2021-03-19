@@ -116,8 +116,9 @@ export function AddImg() {
   function getForms(): JSX.Element[] {
    return (
     formTextFeilds.map(x => (
-      <Box margin={1}>
+      <Box margin={1} key={`box ${x.name}`}>
         <Field
+          key={`field ${x.name}`}
           variant="outlined"
           component={TextField}
           name={x.name}

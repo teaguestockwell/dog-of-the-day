@@ -13,6 +13,7 @@ function getAppBarIndex():number {
     case '/favorites':return 1
     case '/add': return 2
     case '/mine':return 3
+    case '/dod': return 4
     default: return 0
   }
 }
@@ -42,6 +43,7 @@ export function TabBar() {
           </StyledBadge>
           <Tab label="Add Dog" component={Link} to='/add'/>
           <Tab label="My Dogs" component={Link} to='/mine'/>
+          <Tab label="DoD" component={Link} to='/dod'/>
         </Tabs>
       </AppBar>
     </>
