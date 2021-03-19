@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid'
 
 export function ImgLazyGrid({imgs}: {imgs: UnSplashImg[]}) {
   return (
-    <section>
       <Grid
         container
         direction={'row'}
@@ -38,6 +37,5 @@ export function ImgLazyGrid({imgs}: {imgs: UnSplashImg[]}) {
           </Grid>
         ))}
       </Grid>
-    </section>
   )
 }

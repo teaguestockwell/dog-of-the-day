@@ -11,9 +11,9 @@ export function DogOfDay() {
   }, [])
 
   return (
-    <section>
+    <>
       <AllImgs imgName={'dog'} apiQuery={UnSplashService.get1Random} />
       <h2 style={{textAlign: 'center'}}>{fact ? fact : null}</h2>
-    </section>
+    </>
   )
 }

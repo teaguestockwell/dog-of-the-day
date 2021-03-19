@@ -146,7 +146,6 @@ export function AddImg() {
   }
 
   return (
-    <section>
       <Formik
         initialValues={initVals}
         validate={validateForm}
@@ -168,6 +167,5 @@ export function AddImg() {
           </Form>
         )}
       </Formik>
-    </section>
   )
 }

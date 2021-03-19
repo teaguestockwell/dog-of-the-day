@@ -1,10 +1,15 @@
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
+const config: AxiosRequestConfig = {
+  headers: {'Access-Control-Allow-Origin':'*'},
+}
+
 export const DogFactService = {
   get1Random: async (): Promise<string> => {
     try {
       const json = (
         await axios.get(
-          'https://dog-facts-api.herokuapp.com/api/v1/resources/dogs/all'
+          'https://dog-facts-api.herokuapp.com/api/v1/resources/dogs/all',
+          config
         )
       ).data
 
