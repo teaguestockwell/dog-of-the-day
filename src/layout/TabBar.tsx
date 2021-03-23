@@ -44,11 +44,12 @@ export function TabBar() {
   return (
     <>
       <AppBar position="fixed" onClick={onTabClick}>
-        <Tabs value={tabIndex}>
+        <Tabs value={tabIndex}  centered variant={'scrollable'}  scrollButtons={'on'} >
           <Tab label="All Dogs" component={Link} to="/" />
           <StyledBadge badgeContent={favoritesCtx.totalFavoritedImgs}>
             <Tab
               label="Favorite Dogs"
+              wrapped
               color="primary"
               component={Link}
               to="/favorites"
