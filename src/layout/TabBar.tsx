@@ -309,7 +309,7 @@ export function TabBar() {
           <Tab label={`${animalContext.animal}s`} component={Link} to="/" />
           <StyledBadge badgeContent={favoritesCtx.totalFavoritedImgs}>
             <Tab
-              label="Favorite animals"
+              label="Favorite"
               wrapped
               color="primary"
               component={Link}
@@ -318,7 +318,7 @@ export function TabBar() {
           </StyledBadge>
           <Tab label={`Add ${animalContext.animal}`} component={Link} to="/add" />
           <Tab label={`My Animals`} component={Link} to="/mine" />
-          <Tab label={`Animal of the day`} component={Link} to="/random" />
+          <Tab label={`Random`} component={Link} to="/random" />
         </Tabs>
       </AppBar>
     </>
