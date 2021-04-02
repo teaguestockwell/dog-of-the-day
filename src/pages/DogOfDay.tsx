@@ -1,10 +1,12 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import {DogFactService} from '../services/DogFactService'
 import {UnSplashService} from '../services/UnSplashService'
+import { AnimalContext } from '../store/AnimalContext'
 import {AllImgs} from './AllImgs'
 
 export function DogOfDay() {
   const [fact, setFact] = useState<string | null>(null)
+  const animalContext = useContext(AnimalContext)
 
   useEffect(() => {
     DogFactService.get1Random().then((x) => setFact(x))
@@ -12,8 +14,8 @@ export function DogOfDay() {
 
   return (
     <>
-      <AllImgs imgName={'dog'} apiQuery={UnSplashService.get1Random} />
-      <h2 style={{textAlign: 'center'}}>{fact ? fact : null}</h2>
+      <AllImgs imgName={animalContext.animal} apiQuery={UnSplashService.get1Random} />
+      {animalContext.animal === 'dog' ? <h2 style={{textAlign: 'center'}}>{fact ? fact : null}</h2> : null}
     </>
   )
 }

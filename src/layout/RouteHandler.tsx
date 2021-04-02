@@ -6,13 +6,16 @@ import {AllImgs} from '../pages/AllImgs'
 import {Layout} from './Layout'
 import {AddImg} from '../pages/AddImg'
 import {DogOfDay} from '../pages/DogOfDay'
+import { useContext } from 'react'
+import { AnimalContext } from '../store/AnimalContext'
 
 export function RouteHandler() {
+  const animalContext = useContext(AnimalContext)
   return (
     <Layout>
       <Switch>
         <Route path="/" exact>
-          <AllImgs imgName={'dog'} apiQuery={UnSplashService.getN} />
+          <AllImgs imgName={animalContext.animal} apiQuery={UnSplashService.getN} />
         </Route>
         <Route path="/favorites">
           <FavoritesImgs />
@@ -21,9 +24,9 @@ export function RouteHandler() {
           <AddImg />
         </Route>
         <Route path="/mine">
-          <AllImgs imgName={'mydogs'} apiQuery={LocalImgService.readN} />
+          <AllImgs imgName={'favorites'} apiQuery={LocalImgService.readN} />
         </Route>
-        <Route path="/dod">
+        <Route path="/random">
           <DogOfDay />
         </Route>
       </Switch>

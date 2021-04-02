@@ -3,6 +3,7 @@ import {BrowserRouter} from 'react-router-dom'
 import {RouteHandler} from './layout/RouteHandler'
 import {FavoritesContextProvider} from './store/FavoriteContext'
 import {Helmet} from "react-helmet"
+import { AnimalContextProvider } from './store/AnimalContext'
 
 ReactDOM.render(
   <>
@@ -13,9 +14,11 @@ ReactDOM.render(
     />
     </Helmet>
     <FavoritesContextProvider>
-      <BrowserRouter>
-        <RouteHandler />
-      </BrowserRouter>
+      <AnimalContextProvider>
+        <BrowserRouter>
+          <RouteHandler />
+        </BrowserRouter>
+      </AnimalContextProvider>
     </FavoritesContextProvider>
   </>,
   document.getElementById('root')
