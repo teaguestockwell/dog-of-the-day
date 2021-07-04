@@ -40,9 +40,11 @@ const StyledBadge = styled(Badge)(({theme}) => ({
 
 
 export function TabBar() {
-  const [tabIndex, setTabIndex] = useState(1)
+  const [tabIndex, setTabIndex] = useState(0)
   const favoritesCtx = useContext(FavoritesContext)
   const animalContext = useContext(AnimalContext)
+  console.error(animalContext.animal);
+  
 
   function onTabClick() {
     setTabIndex(getAppBarIndex())
@@ -296,8 +298,13 @@ export function TabBar() {
         justify="center"
         style={{ maxHeight: '50vh' }}
       >
-        <Grid item xs={3}>
+        <Grid item xs={6}>
           <Select
+            style={{
+              width: '100%',
+              color: 'white',
+              paddingLeft: 40
+            }}
             disableUnderline
             value={animalContext.animal} 
             onChange={handleChange}>
@@ -309,7 +316,7 @@ export function TabBar() {
           <Tab label={`${animalContext.animal}s`} component={Link} to="/" />
           <StyledBadge badgeContent={favoritesCtx.totalFavoritedImgs}>
             <Tab
-              label="Favorite"
+              label="Favorites"
               wrapped
               color="primary"
               component={Link}

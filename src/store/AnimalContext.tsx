@@ -11,7 +11,7 @@ export const AnimalContext = createContext<IFavoriteContext>({
 })
 
 export function AnimalContextProvider(props: React.PropsWithChildren<{}>) {
-  const [animal, setAnimal] = useState('dog')
+  const [animal, setAnimal] = useState('Dog')
 
   const context: IFavoriteContext = {
     animal: animal,

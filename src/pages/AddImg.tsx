@@ -157,7 +157,11 @@ export function AddImg() {
         }}
       >
         {({submitForm, isSubmitting, touched, errors}) => (
-          <Form>
+          <Form
+            style={{
+              textAlign: 'center',
+            }}
+          >
             {getForms()}
             <Box margin={1}>
               <Button variant="contained" color="primary" onClick={submitForm}>
